@@ -46,13 +46,13 @@ void f3(int arrayRange) {
 void f4(int arrayRange) {
   // f4) Declare uma string com "Oi", imprima cada caractere em uma linha.
 
-//  char* arrayOi = (char*) malloc(arrayRange* sizeof(char)); 
-/*
-    Caso tenha sido dessa forma que o enunciado pede,
-    basta descomentar essa variável e comentar a de baixo.
-*/
+  char* arrayOi = (char*) malloc(arrayRange* sizeof(char)); 
 
-  char arrayOi[2] = "Oi"; // String declarada com "Oi".
+/*
+  Caso tenha sido dessa forma que o enunciado pede,
+  basta descomentar essa variável e comentar a de baixo.
+*/
+//  char arrayOi[2] = "Oi"; // String declarada com "Oi".
 
   arrayOi[0] = 'O';
   arrayOi[1] = 'i';
@@ -133,16 +133,36 @@ void f11(int arrayRange) {
   for(int i = 0; i < arrayRange; i += 1) printf("%d\n", intArray[i]);
 }
 
-void f12() {
+void f12(int arrayRange) {
   // f12) Aloque um array de 3 floats com calloc, atribua 1.5 ao primeiro elemento e imprima todos.
+  float* floatArray = calloc(arrayRange, sizeof(float));
+
+  floatArray[0] = 1.5f;
+
+  for(int i = 0; i < arrayRange; i +=  1) {
+    printf("%.2f", floatArray[i]);
+    if(i != arrayRange - 1) printf("\n");
+  }
 }
 
-void f13() {
+void f13(int arrayRange) {
   // f13) Crie um programa que use calloc para alocar 5 chars, atribua 'a' ao primeiro e imprima.
+  char* charArray = calloc(arrayRange, sizeof(char));
+
+  charArray[0] = 'a';
+
+  for(int i = 0; i < arrayRange; i += 1) {
+    printf("%c", charArray[i]);
+    if(i != arrayRange - 1) printf("\n");
+  }
 }
 
-void f14() {
+void f14(int arrayRange) {
   // f14) Aloque um array de 6 inteiros com calloc, verifique se a alocação foi bem-sucedida e imprima uma mensagem.
+  int* intArray = calloc(arrayRange, sizeof(int));
+
+  for(int i = 0; i < arrayRange; i += 1) printf("%d", intArray[i]);
+  printf("\nAlocação bem-sucedida.");
 }
 
 void f15(int arrayRange) {
@@ -157,44 +177,143 @@ void f15(int arrayRange) {
   free(text);
 }
 
-void f16() {
+void f16(int arrayRange) {
   // f16) Aloque um array de 5 inteiros com calloc, imprima, libere com free e imprima uma mensagem.
+  int* intArray = calloc(arrayRange, sizeof(int)); 
+
+  for(int i = 0; i < arrayRange; i += 1) printf("%d", intArray[i]);
+
+  free(intArray);
+
+  printf("\nLiberação de memória bem-sucedido.");
 }
 
-void f17() {
+void f17(int arrayRange) {
   // f17) Crie uma string com calloc para 6 caracteres, copie "Hello", imprima e libere.
+  char* charArray = calloc(arrayRange, sizeof(char));
+
+  charArray[0] = 'H';
+  charArray[1] = 'e';
+  charArray[2] = 'l';
+  charArray[3] = 'l';
+  charArray[4] = 'o';
+
+  printf("%s", charArray);
+
+  free(charArray);
 }
 
-void f18() {
+void f18(int arrayRange) {
   // f18) Aloque um array de 4 floats com calloc, atribua valores, libere e defina o ponteiro como NULL.
+  float* floatArray = calloc(arrayRange, sizeof(float));
+
+  floatArray[0] = 1.00;
+  floatArray[1] = 2.00;
+  floatArray[2] = 3.00;
+  floatArray[3] = 4.00;
+
+  for(int i = 0; i < arrayRange; i += 1) printf("%.2f ", floatArray[i]);
+
+  free(floatArray);
+
+  floatArray = NULL;
 }
 
-void f19() {
+void f19(int arrayRange) {
   // f19) Use calloc para 3 inteiros, verifique a alocação, libere e imprima "Memória liberada".
+  int* intArray = calloc(arrayRange, sizeof(int));
+
+  for(int i = 0; i < arrayRange; i += 1) printf("%d", intArray[i]);
+
+  free(intArray);
+
+  printf("\nMemória liberada");
 }
 
-void f20() {
+void f20(int arrayRange) {
   // f20) Aloque um array de 5 chars com calloc, atribua 'A' ao primeiro, libere e defina o ponteiro como NULL.
+  char* charArray = calloc(arrayRange, sizeof(char));
+
+  charArray[0] = 'A';
+
+  printf("%s", charArray);
+
+  free(charArray);
+
+  charArray = NULL;
 }
 
-void f21() {
+void f21(int arrayRange) {
   // f21) Aloque um array de 3 inteiros com calloc, redimensione para 6 com realloc, imprima e libere.
+  int* intArray = calloc(arrayRange, sizeof(int));
+
+  intArray = (int*) realloc(intArray, 6* sizeof(int));
+
+  for(int i = 0; i < 6; i += 1) printf("%d", intArray[i]);
+
+  free(intArray);
 }
 
-void f22() {
+void f22(int arrayRange) {
   // f22) Crie uma string com calloc para 4 caracteres, redimensione para 8, copie "Oi mundo" e libere.
+  char* charArray = calloc(arrayRange, sizeof(char));
+
+  charArray = (char*) realloc(charArray, 8* sizeof(char));
+
+  charArray[0] = 'O';
+  charArray[1] = 'i';
+  charArray[2] = ' ';
+  charArray[3] = 'm';
+  charArray[4] = 'u';
+  charArray[5] = 'n';
+  charArray[6] = 'd';
+  charArray[7] = 'o';
+
+  printf("%s", charArray);
+
+  free(charArray);
 }
 
-void f23() {
+void f23(int arrayRange) {
   // f23) Aloque 2 floats com calloc, atribua valores, redimensione para 4, atribua mais valores, imprima e libere.
+  float* floatArray = calloc(arrayRange, sizeof(float));
+
+  floatArray[0] = 1.0f;
+  floatArray[1] = 2.0f;
+
+  floatArray = (float*) realloc(floatArray, 4* sizeof(float));
+
+  floatArray[2] = 3.0f;
+  floatArray[3] = 4.0f;
+
+  for(int i = 0; i < 4; i += 1) printf("%.2f ", floatArray[i]);
+
+  free(floatArray);
 }
 
-void f24() {
+void f24(int arrayRange) {
   // f24) Use calloc para alocar 5 inteiros, redimensione para 3 com realloc, imprima e libere.
+  int* intArray = calloc(arrayRange, sizeof(int));
+
+  intArray = (int*) realloc(intArray, 3* sizeof(int));
+
+  for(int i = 0; i < 3; i += 1) printf("%d", intArray[i]);
+
+  free(intArray);
 }
 
-void f25() {
+void f25(int arrayRange) {
   // f25) Aloque uma string com calloc para 6 caracteres, copie uma palavra do usuário, redimensione para 12, imprima e libere.
+  char* charArray = calloc(arrayRange, sizeof(char));
+
+  printf("Digite uma palavra: ");
+  scanf("%s", charArray);
+
+  charArray = (char*) realloc(charArray, 12* sizeof(char));
+
+  printf("\nPalavra digitada: %s", charArray);
+
+  free(charArray);
 }
 
 void main() {
@@ -210,21 +329,21 @@ void main() {
 //  f8();   // Done
 //  f9(4);  // Done
 //  f10();  // Done
-//  f11(4);
-//  f12();
-//  f13();
-//  f14();
-//  f15(8);
-//  f16();
-//  f17();
-//  f18();
-//  f19();
-//  f20();
-//  f21();
-//  f22();
-//  f23();
-//  f24();
-//  f25();
+//  f11(4); // Done
+//  f12(3); // Done
+//  f13(5); // Done
+//  f14(6); // Done
+//  f15(8); // Done
+//  f16(5); // Done
+//  f17(6); // Done
+//  f18(4); // Done
+//  f19(3); // Done
+//  f20(5); // Done
+//  f21(3); // Done
+//  f22(4); // Done
+//  f23(2); // Done
+//  f24(5); // Done
+//  f25(6); // Done
 
-//  Done: 10/25 
+//  Done: 25/25 
 }
